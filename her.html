@@ -496,6 +496,94 @@
             transform: scale(0.98);
         }
         
+        /* Video Container Styles */
+        .video-container {
+            margin: 40px 0;
+            text-align: center;
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                        0 0 80px rgba(255, 20, 147, 0.4);
+            border: 10px solid #ff69b4;
+            background: #000;
+        }
+        
+        .video-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493);
+            border-radius: 25px;
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.6;
+        }
+        
+        .video-title {
+            font-size: 2.5rem;
+            color: #ff1493;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0px rgba(255, 105, 180, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .video-message {
+            font-size: 1.8rem;
+            color: #db7093;
+            margin-top: 20px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        
+        #surpriseVideo {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+        
+        .video-btn {
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-btn:hover {
+            background: rgba(255, 20, 147, 0.9);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
         /* COMPACT Footer */
         .footer {
             text-align: center;
@@ -563,7 +651,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="none" stroke="%23ffccd5" stroke-width="0.5" d="M0,0 L100,0 L100,100 L0,100 Z"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="none" stroke="%23ffccd5" stroke-width="0.5" d="M0,0 L100,0 L100,100 L0,100 Z"/></svg>');
             opacity: 0.2;
             z-index: 0;
         }
@@ -705,6 +793,18 @@
                 margin: 25px auto;
             }
             
+            .video-title {
+                font-size: 2rem;
+            }
+            
+            .video-wrapper {
+                border-width: 6px;
+            }
+            
+            .video-message {
+                font-size: 1.5rem;
+            }
+            
             .signature {
                 font-size: 1.8rem;
                 flex-direction: column;
@@ -750,6 +850,24 @@
             .message-text {
                 font-size: 1.2rem;
             }
+            
+            .video-title {
+                font-size: 1.8rem;
+            }
+            
+            .video-wrapper {
+                border-width: 4px;
+            }
+            
+            .video-message {
+                font-size: 1.3rem;
+            }
+            
+            .video-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -776,6 +894,7 @@
             <h1 class="title">My Eternal Valentine! 💖</h1>
             <p class="subtitle">To the love that makes my heart beat faster every day</p>
             <div class="heartbeat" style="font-size: 3rem; margin-top: 15px;">💘</div>
+            <p class="subtitle">Press on the photos</p>
         </header>
         
         <!-- SECTION 1: Our Photos Together -->
@@ -789,19 +908,19 @@
             <div class="photo-container">
                 <!-- PHOTO 1 -->
                 <div class="photo-frame">
-                    <img src="one.jpg" alt="Our photo 1" class="photo">
+                    <img src="pics/one.jpg" alt="Our photo 1" class="photo">
                     <div class="photo-caption">Babyyy 💕</div>
                 </div>
                 
                 <!-- PHOTO 2 -->
                 <div class="photo-frame">
-                    <img src="two.jpg" alt="Our photo 2" class="photo">
+                    <img src="pics/two.jpg" alt="Our photo 2" class="photo">
                     <div class="photo-caption">Your Beautiful Smile ✨</div>
                 </div>
                 
                 <!-- PHOTO 3 -->
                 <div class="photo-frame">
-                    <img src="three.jpg"alt="Our photo 3" class="photo">
+                    <img src="pics/three.jpg" alt="Our photo 3" class="photo">
                     <div class="photo-caption">Holding You Close ❤️</div>
                 </div>
             </div>
@@ -828,19 +947,19 @@
             <div class="photo-container">
                 <!-- PHOTO 4 -->
                 <div class="photo-frame">
-                    <img src="four.jpg" alt="Reason 1" class="photo">
+                    <img src="pics/four.jpg" alt="Reason 1" class="photo">
                     <div class="photo-caption">Your Sparkling Eyes, My Goddd✨</div>
                 </div>
                 
                 <!-- PHOTO 5 -->
                 <div class="photo-frame">
-                    <img src="five.jpg" alt="Reason 2" class="photo">
+                    <img src="pics/five.jpg" alt="Reason 2" class="photo">
                     <div class="photo-caption">Your Kind Soul, My Lovee💝</div>
                 </div>
                 
                 <!-- PHOTO 6 -->
                 <div class="photo-frame">
-                    <img src="six.jpg" alt="Reason 3" class="photo">
+                    <img src="pics/six.jpg" alt="Reason 3" class="photo">
                     <div class="photo-caption">Your Loving Heart, Paappa💘</div>
                 </div>
             </div>
@@ -868,19 +987,19 @@
             <div class="photo-container">
                 <!-- PHOTO 7 -->
                 <div class="photo-frame">
-                    <img src="seven.jpg" alt="Promise 1" class="photo">
+                    <img src="pics/seven.jpg" alt="Promise 1" class="photo">
                     <div class="photo-caption">Always Your Shelter 🤗</div>
                 </div>
                 
                 <!-- PHOTO 8 -->
                 <div class="photo-frame">
-                    <img src="eight.jpg" alt="Promise 2" class="photo">
+                    <img src="pics/eight.jpg" alt="Promise 2" class="photo">
                     <div class="photo-caption">Endless Adventures 🌈</div>
                 </div>
                 
                 <!-- PHOTO 9 -->
                 <div class="photo-frame">
-                    <img src="nine.jpg" alt="Promise 3" class="photo">
+                    <img src="pics/nine.jpg" alt="Promise 3" class="photo">
                     <div class="photo-caption">Forever Together 👵🏻👴🏻</div>
                 </div>
             </div>
@@ -928,6 +1047,41 @@
                     
                     Forever and always,<br>
                     Your Love💕
+                </p>
+            </div>
+            
+            <!-- VIDEO SECTION - Added after the note -->
+            <div class="video-container" id="videoSection" style="display: none;">
+                <h3 class="video-title">
+                    <i class="fas fa-video heartbeat"></i>
+                    A Special Video Just For You
+                    <i class="fas fa-video heartbeat"></i>
+                </h3>
+                
+                <div class="video-wrapper">
+                    <video id="surpriseVideo" controls playsinline>
+                        <source src="video.mp4" type="video/mp4">
+                        <source src="video.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <div class="video-controls">
+                        <button class="video-btn" id="playBtn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="video-btn" id="pauseBtn">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="video-btn" id="fullscreenBtn">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <p class="video-message">
+                    <i class="fas fa-heart"></i>
+                    Every frame is filled with my love
+                    <i class="fas fa-heart"></i>
                 </p>
             </div>
             
@@ -1112,7 +1266,7 @@
             createIntroHearts();
         });
         
-        // MAIN WEBSITE FUNCTIONALITY (same as before)
+        // MAIN WEBSITE FUNCTIONALITY
         function initializeMainWebsite() {
             // Create enhanced floating hearts in background
             function createFloatingHearts() {
@@ -1165,6 +1319,7 @@
             // Surprise button functionality
             document.getElementById('surpriseBtn').addEventListener('click', function() {
                 const finalMessage = document.getElementById('finalMessage');
+                const videoSection = document.getElementById('videoSection');
                 const button = this;
                 
                 // Create romantic blossoms
@@ -1193,6 +1348,15 @@
                     finalMessage.style.display = 'block';
                     finalMessage.style.animation = 'fadeInUp 1.5s ease';
                     
+                    // Show video section with delay
+                    setTimeout(() => {
+                        videoSection.style.display = 'block';
+                        videoSection.style.animation = 'fadeInUp 1.5s ease';
+                        
+                        // Initialize video controls
+                        initializeVideoControls();
+                    }, 800);
+                    
                     // Create heart explosion
                     createHeartExplosion();
                     
@@ -1206,6 +1370,62 @@
                     
                 }, 500);
             });
+            
+            // Video controls functionality
+            function initializeVideoControls() {
+                const video = document.getElementById('surpriseVideo');
+                const playBtn = document.getElementById('playBtn');
+                const pauseBtn = document.getElementById('pauseBtn');
+                const fullscreenBtn = document.getElementById('fullscreenBtn');
+                
+                if (!video) return;
+                
+                // Play button
+                playBtn.addEventListener('click', function() {
+                    video.play();
+                    this.style.background = 'rgba(255, 20, 147, 0.9)';
+                    setTimeout(() => {
+                        this.style.background = '';
+                    }, 300);
+                });
+                
+                // Pause button
+                pauseBtn.addEventListener('click', function() {
+                    video.pause();
+                    this.style.background = 'rgba(255, 20, 147, 0.9)';
+                    setTimeout(() => {
+                        this.style.background = '';
+                    }, 300);
+                });
+                
+                // Fullscreen button
+                fullscreenBtn.addEventListener('click', function() {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                    
+                    this.style.background = 'rgba(255, 20, 147, 0.9)';
+                    setTimeout(() => {
+                        this.style.background = '';
+                    }, 300);
+                });
+                
+                // Auto-play video when it becomes visible (with user interaction)
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Video is visible, can add auto-play logic here if desired
+                            console.log('Video is now visible');
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(video);
+            }
             
             // Create heart explosion animation
             function createHeartExplosion() {
@@ -1318,5 +1538,4 @@
         }
     </script>
 </body>
-
 </html>
