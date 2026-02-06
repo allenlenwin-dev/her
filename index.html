@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #ff69b4;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(139, 90, 90, 0.2);
+            border: 3px solid #FFB6C1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            color: #D87093;
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        button {
+            padding: 20px 60px;
+            font-size: 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        #yes {
+            background-color: #FFB6C1;
+            color: #8B5A5A;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+        }
+        
+        #yes:hover {
+            background-color: #FF9EB5;
+            transform: scale(1.05);
+        }
+        
+        #no {
+            background-color: #F5F5DC;
+            color: #8B5A5A;
+            border: 3px solid #FFB6C1;
+            box-shadow: 0 5px 15px rgba(139, 90, 90, 0.2);
+        }
+        
+        #no:hover {
+            background-color: #FFE4E9;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #f8f8f8;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }   
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .quote {
+            margin-top: 20px;
+            color: #D87093;
+            font-size: 1.2rem;
+            font-style: italic;
+            min-height: 30px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .quote.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yes" >YES</button>
+            <button id="no">NO</button>
+        </div>
+        <div class="quote" id="quote"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const yesBtn = document.getElementById('yes');
+            const noBtn = document.getElementById('no');
+            const quote = document.getElementById('quote');
+            
+            let yesSize = 1;
+            let clickCount = 0;
+            
+            const quotes = [
+                "Are you sure? 😢",
+                "Please say yes! ❤️",
+                "My heart will break... 💔"
+            ];
+            
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+            
+            setInterval(createHeart, 300);
+            
+            noBtn.addEventListener('click', function() {
+                clickCount++;
+                yesSize += 0.1;
+                yesBtn.style.transform = `scale(${yesSize})`;
+                
+                const moveX = Math.random() * 100 - 50;
+                const moveY = Math.random() * 100 - 50;
+                noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                
+                if (clickCount <= 3) {
+                    quote.textContent = quotes[clickCount - 1];
+                    quote.classList.remove('show');
+                    setTimeout(() => quote.classList.add('show'), 10);
+                }
+                
+                if (clickCount >= 4) {
+                    noBtn.style.display = 'none';
+                    quote.textContent = "You have to say YES now! 😊";
+                }
+                
+                if (clickCount > 3) {
+                    noBtn.style.padding = `${Math.max(10, 20 - clickCount)}px ${Math.max(30, 60 - clickCount*5)}px`;
+                    noBtn.style.fontSize = `${Math.max(1, 2 - clickCount*0.1)}rem`;
+                }
+            });
+            
+            yesBtn.addEventListener('click', function() {
+                window.location.href = 'her.html';
+            });
+            
+            yesBtn.addEventListener('mouseenter', function() {
+                yesBtn.style.transform = `scale(${yesSize * 1.1})`;
+            });
+            
+            yesBtn.addEventListener('mouseleave', function() {
+                yesBtn.style.transform = `scale(${yesSize})`;
+            });
+        });
+    </script>
+</body>
+</html>
