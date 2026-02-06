@@ -131,6 +131,117 @@
             opacity: 1;
         }
         
+        /* Countdown Container Styles */
+        .countdown-container {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 182, 193, 0.2);
+            border-radius: 15px;
+            border: 2px dashed #FFB6C1;
+        }
+        
+        .countdown-title {
+            color: #D87093;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            min-width: 70px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .countdown-number {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #8B5A5A;
+            margin-top: 5px;
+        }
+        
+        .countdown-message {
+            margin-top: 15px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            color: #D87093;
+            line-height: 1.4;
+        }
+        
+        /* Surprise Container Styles */
+        .surprise-container {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 182, 193, 0.2);
+            border-radius: 15px;
+            border: 2px dashed #FFB6C1;
+        }
+        
+        .surprise-title {
+            color: #D87093;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .surprise-message {
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            border-radius: 15px;
+            color: white;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+            border: 2px solid white;
+        }
+        
+        .surprise-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+            }
+        }
+        
+        .celebrate-message {
+            margin-top: 20px;
+            color: #D87093;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-style: italic;
+            line-height: 1.4;
+        }
+        
         /* Mobile-specific optimizations */
         @media (max-width: 480px) {
             body {
@@ -161,6 +272,16 @@
             .heart {
                 font-size: 14px;
             }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 8px 12px;
+            }
+            
+            .surprise-message {
+                padding: 12px;
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 360px) {
@@ -172,6 +293,20 @@
                 padding: 12px 16px;
                 min-width: 110px;
                 font-size: 1.1rem;
+            }
+            
+            .countdown-display {
+                gap: 8px;
+            }
+            
+            .countdown-item {
+                min-width: 55px;
+                padding: 6px 10px;
+            }
+            
+            .surprise-message {
+                padding: 10px;
+                font-size: 1rem;
             }
         }
         
@@ -203,6 +338,53 @@
             <button id="no">NO</button>
         </div>
         <div class="quote" id="quote"></div>
+        
+        <!-- Countdown Container (shown when YES is clicked before Feb 14, 2026) -->
+        <div class="countdown-container" id="countdownContainer">
+            <div class="countdown-title">🎀 The wait begins... 🎀</div>
+            <div class="countdown-display">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            <div class="countdown-message" id="countdownMessage">
+                Waiting for Valentine's Day 2026... ❤️
+            </div>
+            <div class="surprise-message">
+                <span class="surprise-icon">🎁</span>
+                A SPECIAL SURPRISE IS WAITING FOR YOU!
+            </div>
+        </div>
+        
+        <!-- Surprise Container (shown after Feb 14, 2026) -->
+        <div class="surprise-container" id="surpriseContainer">
+            <div class="surprise-title">🎀 IT'S VALENTINE'S DAY! 🎀</div>
+            <div class="surprise-message">
+                <span class="surprise-icon">💝</span>
+                SURPRISE REVEALED!
+            </div>
+            <div class="celebrate-message">
+                Click the button below to see your special Valentine's Day surprise! 💖
+            </div>
+            <div class="buttons" style="margin-top: 20px;">
+                <button id="revealSurprise" style="background: linear-gradient(135deg, #ff69b4, #ff1493); color: white; border: 2px solid white;">
+                    REVEAL SURPRISE
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -210,9 +392,20 @@
             const yesBtn = document.getElementById('yes');
             const noBtn = document.getElementById('no');
             const quote = document.getElementById('quote');
+            const countdownContainer = document.getElementById('countdownContainer');
+            const surpriseContainer = document.getElementById('surpriseContainer');
+            const revealSurpriseBtn = document.getElementById('revealSurprise');
+            
+            // Countdown elements
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            const countdownMessage = document.getElementById('countdownMessage');
             
             let yesSize = 1;
             let clickCount = 0;
+            let countdownInterval = null;
             
             const quotes = [
                 "Are you sure? 😢",
@@ -220,12 +413,120 @@
                 "My heart will break... 💔"
             ];
             
+            // Function to get IST time (UTC+5:30)
+            function getISTDate() {
+                const now = new Date();
+                // Convert to IST (UTC+5:30)
+                return new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+            }
+            
+            // Function to check if it's after February 14, 2026
+            function isAfterFeb142026() {
+                const nowIST = getISTDate();
+                const feb142026 = new Date(Date.UTC(2026, 1, 13, 18, 30, 0)); // Feb 14, 2026, 00:00 IST
+                
+                // If current date is after Feb 14, 2026
+                return nowIST > feb142026;
+            }
+            
+            // Function to get target date (February 14, 2026, 12:00 AM IST)
+            function getTargetDate() {
+                // Always target February 14, 2026
+                return new Date(Date.UTC(2026, 1, 13, 18, 30, 0)); // Feb 14, 2026, 00:00 IST
+            }
+            
+            // Function to start the countdown
+            function startCountdown() {
+                // Clear any existing interval
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                }
+                
+                // Update countdown immediately
+                updateCountdown();
+                
+                // Update countdown every second
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }
+            
+            // Function to update the countdown display
+            function updateCountdown() {
+                const now = new Date();
+                const targetDate = getTargetDate();
+                
+                // Calculate time difference
+                const timeDiff = targetDate - now;
+                
+                if (timeDiff <= 0) {
+                    // Countdown finished! Redirect to her.html
+                    clearInterval(countdownInterval);
+                    window.location.href = 'her.html';
+                    return;
+                }
+                
+                // Calculate days, hours, minutes, seconds
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                
+                // Update display
+                daysElement.textContent = days.toString().padStart(2, '0');
+                hoursElement.textContent = hours.toString().padStart(2, '0');
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+                
+                // Update message based on time remaining
+                updateCountdownMessage(days, hours, minutes);
+            }
+            
+            // Function to update countdown message
+            function updateCountdownMessage(days, hours, minutes) {
+                if (days > 30) {
+                    countdownMessage.textContent = `${days} days until Valentine's Day 2026! ❤️`;
+                } else if (days > 7) {
+                    countdownMessage.textContent = `Only ${days} days left! Getting closer! 💖`;
+                } else if (days > 1) {
+                    countdownMessage.textContent = `${days} days to go! The excitement builds! 💕`;
+                } else if (days === 1) {
+                    countdownMessage.textContent = "Just 1 day left! Get ready for something special! 💘";
+                } else if (hours > 6) {
+                    countdownMessage.textContent = `${hours} hours remaining... Almost there! 💝`;
+                } else if (hours > 1) {
+                    countdownMessage.textContent = `${hours} hours! The moment is approaching! 💓`;
+                } else if (hours === 1) {
+                    countdownMessage.textContent = "Just 1 hour left! Prepare for your surprise! 💗";
+                } else if (minutes > 10) {
+                    countdownMessage.textContent = `${minutes} minutes! It's almost time! ✨`;
+                } else if (minutes > 1) {
+                    countdownMessage.textContent = `${minutes} minutes! Get ready! 🎁`;
+                } else {
+                    countdownMessage.textContent = "Almost Valentine's Day! Surprise incoming! 🎀";
+                }
+            }
+            
+            // Check if we should show surprise directly (after Feb 14, 2026)
+            function checkInitialState() {
+                if (isAfterFeb142026()) {
+                    // Hide the initial buttons and show surprise container
+                    document.querySelector('.buttons').style.display = 'none';
+                    quote.style.display = 'none';
+                    surpriseContainer.style.display = 'block';
+                    
+                    // Update title for post-2026
+                    document.querySelector('h1').textContent = "Happy Valentine's Day!";
+                    
+                    // Create more hearts for celebration
+                    setInterval(createHeart, 150);
+                }
+            }
+            
             function createHeart() {
                 const heart = document.createElement('div');
                 heart.innerHTML = '❤';
                 heart.classList.add('heart');
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = (Math.random() * 16 + 12) + 'px';
+                heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
                 heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
                 document.body.appendChild(heart);
                 
@@ -234,9 +535,20 @@
                 }, 6000);
             }
             
+            // Initial check
+            checkInitialState();
+            
             setInterval(createHeart, 300);
             
             noBtn.addEventListener('click', function() {
+                // Only allow NO button if we're before Feb 14, 2026
+                if (isAfterFeb142026()) {
+                    noBtn.disabled = true;
+                    noBtn.style.opacity = '0.5';
+                    noBtn.style.cursor = 'not-allowed';
+                    return;
+                }
+                
                 clickCount++;
                 yesSize += 0.1;
                 yesBtn.style.transform = `scale(${yesSize})`;
@@ -263,17 +575,43 @@
             });
             
             yesBtn.addEventListener('click', function() {
+                // Check if it's after Feb 14, 2026
+                if (isAfterFeb142026()) {
+                    // After Feb 14, 2026 - go directly to her.html
+                    window.location.href = 'her.html';
+                } else {
+                    // Before Feb 14, 2026 - show countdown immediately
+                    // Hide the buttons and quote
+                    yesBtn.style.display = 'none';
+                    noBtn.style.display = 'none';
+                    quote.style.display = 'none';
+                    
+                    // Show countdown container
+                    countdownContainer.style.display = 'block';
+                    
+                    // Start the countdown
+                    startCountdown();
+                }
+            });
+            
+            // Reveal surprise button (for after Feb 14, 2026)
+            revealSurpriseBtn.addEventListener('click', function() {
+                // After Feb 14, 2026 - go directly to her.html
                 window.location.href = 'her.html';
             });
             
             // Only add hover effects for non-touch devices
             if (window.matchMedia("(hover: hover)").matches) {
                 yesBtn.addEventListener('mouseenter', function() {
-                    yesBtn.style.transform = `scale(${yesSize * 1.1})`;
+                    if (!isAfterFeb142026()) {
+                        yesBtn.style.transform = `scale(${yesSize * 1.1})`;
+                    }
                 });
                 
                 yesBtn.addEventListener('mouseleave', function() {
-                    yesBtn.style.transform = `scale(${yesSize})`;
+                    if (!isAfterFeb142026()) {
+                        yesBtn.style.transform = `scale(${yesSize})`;
+                    }
                 });
             }
         });
